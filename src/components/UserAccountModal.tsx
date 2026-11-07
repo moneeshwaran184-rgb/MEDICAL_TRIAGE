@@ -102,33 +102,33 @@ export const UserAccountModal: React.FC<UserAccountModalProps> = ({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.96, y: 15 }}
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-          className="relative w-full max-w-2xl bg-white dark:bg-[#151838] rounded-3xl shadow-2xl border border-slate-100 dark:border-white/10 overflow-hidden z-10 my-8"
+          className="relative w-full max-w-2xl bg-white dark:bg-[#182032] rounded-3xl shadow-neo-xl border-[2.5px] border-black overflow-hidden z-10 my-8"
         >
-          {/* Header */}
-          <div className="bg-gradient-to-r from-[#5145FF] via-[#8957FF] to-[#E34AD7] p-6 text-white relative">
+          {/* Header (Vibrant Sunshine Yellow with Solid Black Border) */}
+          <div className="bg-[#FFCC24] border-b-2 border-black p-6 text-black relative">
             <button
               type="button"
               onClick={onClose}
-              className="absolute top-5 right-5 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+              className="absolute top-5 right-5 p-2 rounded-full bg-white text-black border-2 border-black shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all cursor-pointer"
               aria-label="Close user profile"
             >
-              <X className="w-5 h-5" />
+              <X className="w-5 h-5 stroke-[3]" />
             </button>
 
             <div className="flex items-center gap-4">
               <div
-                className={`w-14 h-14 rounded-2xl bg-gradient-to-tr ${user.avatarGradient} flex items-center justify-center text-white text-xl font-black shadow-md border-2 border-white/30`}
+                className={`w-14 h-14 rounded-2xl bg-gradient-to-tr ${user.avatarGradient} flex items-center justify-center text-white text-xl font-black border-2 border-black shadow-neo-sm`}
               >
                 {user.avatarInitials}
               </div>
               <div>
-                <span className="text-xs uppercase font-extrabold tracking-wider text-white/80 block">
+                <span className="text-xs uppercase font-black tracking-wider text-black/70 block">
                   Patient Portal · {user.joinedDate}
                 </span>
-                <h2 id="account-modal-title" className="text-2xl font-bold">
+                <h2 id="account-modal-title" className="text-2xl font-black">
                   {user.name}
                 </h2>
-                <span className="text-xs text-white/90">
+                <span className="text-xs font-bold text-black/80">
                   {user.email} · {user.countryCode} {user.phone}
                 </span>
               </div>
@@ -136,43 +136,43 @@ export const UserAccountModal: React.FC<UserAccountModalProps> = ({
           </div>
 
           {/* Sub Navigation Bar */}
-          <div className="flex border-b border-slate-100 dark:border-white/10 px-6 pt-3 gap-2 bg-[#FFFDF8] dark:bg-[#0B0C1E]">
+          <div className="flex border-b-2 border-black px-6 pt-3 gap-2 bg-[#FAF7EE] dark:bg-[#0E131F]">
             <button
               type="button"
               onClick={() => setActiveSubTab('appointments')}
-              className={`pb-3 px-3 text-xs sm:text-sm font-bold border-b-2 transition-all flex items-center gap-2 ${
+              className={`pb-3 px-3 text-xs sm:text-sm font-black border-b-2 transition-all flex items-center gap-2 cursor-pointer ${
                 activeSubTab === 'appointments'
-                  ? 'border-[#5145FF] dark:border-[#8957FF] text-[#5145FF] dark:text-[#A594FD]'
-                  : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  ? 'border-black text-black dark:text-[#FFCC24] dark:border-[#FFCC24]'
+                  : 'border-transparent text-black/60 dark:text-slate-400 hover:text-black'
               }`}
             >
-              <Calendar className="w-4 h-4" />
+              <Calendar className="w-4 h-4 stroke-[2.5]" />
               <span>My Appointments ({bookings.length})</span>
             </button>
 
             <button
               type="button"
               onClick={() => setActiveSubTab('profile')}
-              className={`pb-3 px-3 text-xs sm:text-sm font-bold border-b-2 transition-all flex items-center gap-2 ${
+              className={`pb-3 px-3 text-xs sm:text-sm font-black border-b-2 transition-all flex items-center gap-2 cursor-pointer ${
                 activeSubTab === 'profile'
-                  ? 'border-[#5145FF] dark:border-[#8957FF] text-[#5145FF] dark:text-[#A594FD]'
-                  : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  ? 'border-black text-black dark:text-[#FFCC24] dark:border-[#FFCC24]'
+                  : 'border-transparent text-black/60 dark:text-slate-400 hover:text-black'
               }`}
             >
-              <User className="w-4 h-4" />
+              <User className="w-4 h-4 stroke-[2.5]" />
               <span>Personal Details</span>
             </button>
 
             <button
               type="button"
               onClick={() => setActiveSubTab('settings')}
-              className={`pb-3 px-3 text-xs sm:text-sm font-bold border-b-2 transition-all flex items-center gap-2 ${
+              className={`pb-3 px-3 text-xs sm:text-sm font-black border-b-2 transition-all flex items-center gap-2 cursor-pointer ${
                 activeSubTab === 'settings'
-                  ? 'border-[#5145FF] dark:border-[#8957FF] text-[#5145FF] dark:text-[#A594FD]'
-                  : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  ? 'border-black text-black dark:text-[#FFCC24] dark:border-[#FFCC24]'
+                  : 'border-transparent text-black/60 dark:text-slate-400 hover:text-black'
               }`}
             >
-              <Settings className="w-4 h-4" />
+              <Settings className="w-4 h-4 stroke-[2.5]" />
               <span>Settings</span>
             </button>
           </div>

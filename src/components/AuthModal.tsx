@@ -202,34 +202,34 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 15 }}
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-          className="relative w-full max-w-lg bg-white dark:bg-[#151838] rounded-3xl shadow-2xl border border-slate-100 dark:border-white/10 overflow-hidden z-10 my-8"
+          className="relative w-full max-w-lg bg-white dark:bg-[#182032] rounded-3xl shadow-neo-xl border-[2.5px] border-black overflow-hidden z-10 my-8"
         >
-          {/* Decorative Aurora Top Bar Gradient */}
-          <div className="h-2 w-full bg-gradient-to-r from-[#5145FF] via-[#E34AD7] via-[#16CBE5] to-[#FF745C]" />
+          {/* Decorative Sunshine Yellow Top Bar */}
+          <div className="h-3 w-full bg-[#FFCC24] border-b-2 border-black" />
 
           {/* Close button */}
           <button
             type="button"
             onClick={onClose}
-            className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-colors focus-visible:outline-2"
+            className="absolute top-5 right-5 p-2 rounded-full text-black dark:text-white bg-[#FAF7EE] dark:bg-[#0E131F] border-2 border-black shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all cursor-pointer"
             aria-label="Close authentication dialog"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 stroke-[3]" />
           </button>
 
           <div className="p-6 sm:p-8 space-y-6">
             {/* Header Lockup */}
             <div className="space-y-1.5">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F0E8FF] dark:bg-[#5145FF]/20 text-[#5145FF] dark:text-[#A594FD] text-xs font-bold tracking-wide">
-                <Sparkles className="w-3.5 h-3.5 text-[#8957FF]" />
-                <span>Aurora Care Patient Portal</span>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFCC24] text-black text-xs font-black border-2 border-black shadow-neo-sm">
+                <Sparkles className="w-3.5 h-3.5 fill-black text-black" />
+                <span>Aether Care Patient Portal</span>
               </div>
 
-              <h2 id="auth-modal-title" className="text-2xl sm:text-3xl font-extrabold text-[#171A3B] dark:text-white">
-                {mode === 'signin' ? 'Welcome back' : 'Create your patient account'}
+              <h2 id="auth-modal-title" className="text-2xl sm:text-3xl font-black text-black dark:text-white">
+                {mode === 'signin' ? 'Welcome back' : 'Create patient account'}
               </h2>
 
-              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              <p className="text-xs sm:text-sm text-black/70 dark:text-slate-400 font-bold">
                 {mode === 'signin'
                   ? 'Sign in with your email or registered mobile number. Doctors sign in here too.'
                   : 'Create your patient account with your own password, mobile number, age and gender.'}
@@ -242,9 +242,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 initial={{ opacity: 0, y: -6 }}
                 animate={{ opacity: 1, y: 0 }}
                 role="status"
-                className="p-3.5 rounded-2xl bg-[#B9F4D0]/50 dark:bg-[#00CFA8]/15 border border-[#00CFA8]/40 text-[#065f46] dark:text-[#B9F4D0] text-xs flex items-center gap-2.5 font-medium"
+                className="p-3.5 rounded-2xl bg-[#00D09C] text-black border-2 border-black shadow-neo-sm text-xs flex items-center gap-2.5 font-black"
               >
-                <CheckCircle2 className="w-4 h-4 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 shrink-0 stroke-[2.5]" />
                 <span>{infoMsg}</span>
               </motion.div>
             )}
@@ -255,34 +255,32 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 initial={{ opacity: 0, y: -6 }}
                 animate={{ opacity: 1, y: 0 }}
                 role="alert"
-                className="p-3.5 rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 text-rose-800 dark:text-rose-200 text-xs flex items-center gap-2.5 font-medium"
+                className="p-3.5 rounded-2xl bg-[#FF6B8B] text-black border-2 border-black shadow-neo-sm text-xs flex items-center gap-2.5 font-black"
               >
-                <AlertCircle className="w-4 h-4 shrink-0 text-rose-600 dark:text-rose-400" />
+                <AlertCircle className="w-4 h-4 shrink-0 stroke-[2.5]" />
                 <span>{errorMsg}</span>
               </motion.div>
             )}
 
             {/* TAB SELECTOR / SWITCHER */}
-            <div className="grid grid-cols-2 p-1 rounded-2xl bg-[#FFFDF8] dark:bg-[#0B0C1E] border border-slate-200 dark:border-white/10">
+            <div className="grid grid-cols-2 p-1.5 rounded-2xl bg-[#FAF7EE] dark:bg-[#0E131F] border-2 border-black gap-1.5">
               <button
                 type="button"
                 onClick={() => onSwitchMode('signin')}
-                className={`py-2 text-xs sm:text-sm font-bold rounded-xl transition-all ${
-                  mode === 'signin'
-                    ? 'bg-white dark:bg-[#1E234F] text-[#5145FF] dark:text-[#A594FD] shadow-xs'
-                    : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white'
-                }`}
+                className={`py-2 text-xs sm:text-sm font-black rounded-xl transition-all cursor-pointer ${mode === 'signin'
+                    ? 'bg-[#FFCC24] text-black border-2 border-black shadow-neo-sm translate-y-[-1px]'
+                    : 'text-black dark:text-slate-400 hover:text-black'
+                  }`}
               >
                 Sign In
               </button>
               <button
                 type="button"
                 onClick={() => onSwitchMode('signup')}
-                className={`py-2 text-xs sm:text-sm font-bold rounded-xl transition-all ${
-                  mode === 'signup'
-                    ? 'bg-gradient-to-r from-[#5145FF] to-[#8957FF] text-white shadow-xs'
-                    : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white'
-                }`}
+                className={`py-2 text-xs sm:text-sm font-black rounded-xl transition-all cursor-pointer ${mode === 'signup'
+                    ? 'bg-[#FFCC24] text-black border-2 border-black shadow-neo-sm translate-y-[-1px]'
+                    : 'text-black dark:text-slate-400 hover:text-black'
+                  }`}
               >
                 Create Account
               </button>
@@ -302,19 +300,19 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 <div>
                   <label
                     htmlFor="signin-id"
-                    className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5"
+                    className="block text-xs font-black text-black dark:text-slate-300 uppercase tracking-wider mb-1.5"
                   >
                     Email or Mobile Number
                   </label>
                   <div className="relative">
-                    <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                    <Mail className="w-4 h-4 text-black/60 dark:text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
                       id="signin-id"
                       type="text"
-                      placeholder="patient@example.com or 98765 43210"
+                      placeholder="patient@example.com or 07123 456789"
                       value={signInIdentifier}
                       onChange={(e) => setSignInIdentifier(e.target.value)}
-                      className="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-[#0B0C1E] border border-slate-200 dark:border-white/15 rounded-xl text-sm text-[#171A3B] dark:text-white focus:bg-white dark:focus:bg-[#0F1129] focus:border-[#5145FF] focus:ring-2 focus:ring-[#5145FF]/20 focus-visible:outline-none transition-all"
+                      className="w-full pl-10 pr-4 py-3 bg-[#FAF7EE] dark:bg-[#0E131F] border-2 border-black rounded-xl text-sm font-bold text-black dark:text-white focus:bg-white focus:outline-none transition-all"
                     />
                   </div>
                 </div>
@@ -323,7 +321,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   <div className="flex justify-between items-center mb-1.5">
                     <label
                       htmlFor="signin-password"
-                      className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider"
+                      className="text-xs font-black text-black dark:text-slate-300 uppercase tracking-wider"
                     >
                       Password
                     </label>
@@ -336,25 +334,25 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                             : 'Demo mode: In production, password reset instructions are dispatched via SMS/email.'
                         )
                       }
-                      className="text-xs text-[#5145FF] dark:text-[#A594FD] hover:underline font-semibold"
+                      className="text-xs text-[#2154FE] dark:text-[#FFCC24] hover:underline font-black"
                     >
                       Forgot password?
                     </button>
                   </div>
                   <div className="relative">
-                    <Lock className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                    <Lock className="w-4 h-4 text-black/60 dark:text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
                       id="signin-password"
                       type={showPassword ? 'text' : 'password'}
                       placeholder="••••••••"
                       value={signInPassword}
                       onChange={(e) => setSignInPassword(e.target.value)}
-                      className="w-full pl-10 pr-10 py-2.5 bg-slate-50 dark:bg-[#0B0C1E] border border-slate-200 dark:border-white/15 rounded-xl text-sm text-[#171A3B] dark:text-white focus:bg-white dark:focus:bg-[#0F1129] focus:border-[#5145FF] focus:ring-2 focus:ring-[#5145FF]/20 focus-visible:outline-none transition-all"
+                      className="w-full pl-10 pr-10 py-3 bg-[#FAF7EE] dark:bg-[#0E131F] border-2 border-black rounded-xl text-sm font-bold text-black dark:text-white focus:bg-white focus:outline-none transition-all"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="p-1.5 absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+                      className="p-1.5 absolute right-2.5 top-1/2 -translate-y-1/2 text-black/60 dark:text-slate-400"
                       aria-label={showPassword ? 'Hide password' : 'Show password'}
                     >
                       {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -362,17 +360,17 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between text-xs text-slate-600 dark:text-slate-400 pt-1">
+                <div className="flex items-center justify-between text-xs text-black/80 dark:text-slate-400 pt-1 font-bold">
                   <label className="flex items-center gap-2 cursor-pointer select-none">
                     <input
                       type="checkbox"
                       checked={rememberMe}
                       onChange={(e) => setRememberMe(e.target.checked)}
-                      className="w-4 h-4 rounded text-[#5145FF] accent-[#5145FF]"
+                      className="w-4 h-4 rounded text-black accent-[#2154FE] border-2 border-black"
                     />
                     <span>Remember my session</span>
                   </label>
-                  <span className="text-[11px] text-slate-400 dark:text-slate-500">
+                  <span className="text-[11px] font-black">
                     {isSupabaseConfigured ? 'Secure Session' : 'Demo Environment'}
                   </span>
                 </div>
@@ -380,10 +378,10 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-3.5 px-4 bg-gradient-to-r from-[#5145FF] to-[#8957FF] hover:from-[#4338ca] hover:to-[#7c3aed] text-white font-bold rounded-2xl text-sm shadow-aurora-indigo transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
+                  className="w-full py-4 px-4 bg-[#FFCC24] hover:bg-[#F5C21B] text-black font-black rounded-full text-sm border-2 border-black shadow-neo hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   {isLoading ? 'Verifying Session...' : 'Sign In to Portal'}
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 stroke-[3]" />
                 </button>
               </motion.form>
             )}
@@ -402,12 +400,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 <div>
                   <label
                     htmlFor="signup-name"
-                    className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1"
+                    className="block text-xs font-black text-black dark:text-slate-300 uppercase tracking-wider mb-1"
                   >
                     Full Name *
                   </label>
                   <div className="relative">
-                    <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                    <User className="w-4 h-4 text-black/60 dark:text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
                       id="signup-name"
                       type="text"
@@ -415,7 +413,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                       placeholder="Aarav Patel"
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
-                      className="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-[#0B0C1E] border border-slate-200 dark:border-white/15 rounded-xl text-sm text-[#171A3B] dark:text-white focus:bg-white dark:focus:bg-[#0F1129] focus:border-[#5145FF] focus:ring-2 focus:ring-[#5145FF]/20 focus-visible:outline-none transition-all"
+                      className="w-full pl-10 pr-4 py-2.5 bg-[#FAF7EE] dark:bg-[#0E131F] border-2 border-black rounded-xl text-sm font-bold text-black dark:text-white focus:bg-white focus:outline-none transition-all"
                     />
                   </div>
                 </div>
@@ -423,12 +421,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 <div>
                   <label
                     htmlFor="signup-email"
-                    className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1"
+                    className="block text-xs font-black text-black dark:text-slate-300 uppercase tracking-wider mb-1"
                   >
                     Email Address *
                   </label>
                   <div className="relative">
-                    <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                    <Mail className="w-4 h-4 text-black/60 dark:text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
                       id="signup-email"
                       type="email"
@@ -436,7 +434,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                       placeholder="aarav@example.com"
                       value={signUpEmail}
                       onChange={(e) => setSignUpEmail(e.target.value)}
-                      className="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-[#0B0C1E] border border-slate-200 dark:border-white/15 rounded-xl text-sm text-[#171A3B] dark:text-white focus:bg-white dark:focus:bg-[#0F1129] focus:border-[#5145FF] focus:ring-2 focus:ring-[#5145FF]/20 focus-visible:outline-none transition-all"
+                      className="w-full pl-10 pr-4 py-2.5 bg-[#FAF7EE] dark:bg-[#0E131F] border-2 border-black rounded-xl text-sm font-bold text-black dark:text-white focus:bg-white focus:outline-none transition-all"
                     />
                   </div>
                 </div>
@@ -444,109 +442,88 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 <div>
                   <label
                     htmlFor="signup-phone"
-                    className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1"
+                    className="block text-xs font-black text-black dark:text-slate-300 uppercase tracking-wider mb-1"
                   >
                     Mobile Number *
                   </label>
-                  <div className="flex gap-2">
-                    <select
-                      value={countryCode}
-                      onChange={(e) => setCountryCode(e.target.value)}
-                      className="w-24 px-2 py-2 bg-slate-50 dark:bg-[#0B0C1E] border border-slate-200 dark:border-white/15 rounded-xl text-xs font-semibold text-[#171A3B] dark:text-white focus:border-[#5145FF] focus-visible:outline-none"
-                    >
-                      <option value="+91">🇮🇳 +91</option>
-                      <option value="+1">🇺🇸 +1</option>
-                      <option value="+44">🇬🇧 +44</option>
-                      <option value="+61">🇦🇺 +61</option>
-                      <option value="+971">🇦🇪 +971</option>
-                      <option value="+65">🇸🇬 +65</option>
-                    </select>
-                    <div className="relative flex-1">
-                      <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-                      <input
-                        id="signup-phone"
-                        type="tel"
-                        required
-                        placeholder="98765 43210"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-[#0B0C1E] border border-slate-200 dark:border-white/15 rounded-xl text-sm text-[#171A3B] dark:text-white focus:bg-white dark:focus:bg-[#0F1129] focus:border-[#5145FF] focus:ring-2 focus:ring-[#5145FF]/20 focus-visible:outline-none transition-all"
-                      />
-                    </div>
+                  <div className="relative">
+                    <Phone className="w-4 h-4 text-black/60 dark:text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                    <input
+                      id="signup-phone"
+                      type="tel"
+                      required
+                      placeholder="07123 456789"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      className="w-full pl-10 pr-4 py-2.5 bg-[#FAF7EE] dark:bg-[#0E131F] border-2 border-black rounded-xl text-sm font-bold text-black dark:text-white focus:bg-white focus:outline-none transition-all"
+                    />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label
                       htmlFor="signup-age"
-                      className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1"
+                      className="block text-xs font-black text-black dark:text-slate-300 uppercase tracking-wider mb-1"
                     >
                       Age *
                     </label>
-                    <div className="relative">
-                      <CalendarDays className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-                      <input
-                        id="signup-age"
-                        type="number"
-                        required
-                        min={1}
-                        max={120}
-                        placeholder="e.g. 34"
-                        value={age}
-                        onChange={(e) => setAge(e.target.value)}
-                        className="w-full pl-10 pr-3 py-2 bg-slate-50 dark:bg-[#0B0C1E] border border-slate-200 dark:border-white/15 rounded-xl text-sm text-[#171A3B] dark:text-white focus:bg-white dark:focus:bg-[#0F1129] focus:border-[#5145FF] focus-visible:outline-none transition-all"
-                      />
-                    </div>
+                    <input
+                      id="signup-age"
+                      type="number"
+                      required
+                      min="1"
+                      max="120"
+                      placeholder="32"
+                      value={age}
+                      onChange={(e) => setAge(e.target.value)}
+                      className="w-full px-3 py-2.5 bg-[#FAF7EE] dark:bg-[#0E131F] border-2 border-black rounded-xl text-sm font-bold text-black dark:text-white focus:bg-white focus:outline-none transition-all"
+                    />
                   </div>
 
                   <div>
                     <label
                       htmlFor="signup-gender"
-                      className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1"
+                      className="block text-xs font-black text-black dark:text-slate-300 uppercase tracking-wider mb-1"
                     >
                       Gender *
                     </label>
-                    <div className="relative">
-                      <UserCheck className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-                      <select
-                        id="signup-gender"
-                        required
-                        value={gender}
-                        onChange={(e) => setGender(e.target.value)}
-                        className="w-full pl-10 pr-3 py-2 bg-slate-50 dark:bg-[#0B0C1E] border border-slate-200 dark:border-white/15 rounded-xl text-sm text-[#171A3B] dark:text-white focus:bg-white dark:focus:bg-[#0F1129] focus:border-[#5145FF] focus-visible:outline-none transition-all appearance-none"
-                      >
-                        <option value="">Select gender</option>
-                        <option value="Female">Female</option>
-                        <option value="Male">Male</option>
-                        <option value="Other">Other</option>
-                        <option value="Prefer not to say">Prefer not to say</option>
-                      </select>
-                    </div>
+                    <select
+                      id="signup-gender"
+                      required
+                      value={gender}
+                      onChange={(e) => setGender(e.target.value)}
+                      className="w-full px-3 py-2.5 bg-[#FAF7EE] dark:bg-[#0E131F] border-2 border-black rounded-xl text-sm font-bold text-black dark:text-white focus:bg-white focus:outline-none transition-all"
+                    >
+                      <option value="">Select</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="other">Other</option>
+                    </select>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label
-                      htmlFor="signup-pwd"
-                      className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1"
+                      htmlFor="signup-password"
+                      className="block text-xs font-black text-black dark:text-slate-300 uppercase tracking-wider mb-1"
                     >
-                      Create Password *
+                      Password *
                     </label>
                     <div className="relative">
                       <input
-                        id="signup-pwd"
+                        id="signup-password"
                         type={showPassword ? 'text' : 'password'}
                         placeholder="At least 6 chars"
                         value={signUpPassword}
                         onChange={(e) => setSignUpPassword(e.target.value)}
-                        className="w-full px-3 py-2 bg-slate-50 dark:bg-[#0B0C1E] border border-slate-200 dark:border-white/15 rounded-xl text-sm text-[#171A3B] dark:text-white focus:bg-white dark:focus:bg-[#0F1129] focus:border-[#5145FF] focus-visible:outline-none transition-all"
+                        className="w-full px-3 py-2.5 bg-[#FAF7EE] dark:bg-[#0E131F] border-2 border-black rounded-xl text-sm font-bold text-black dark:text-white focus:bg-white focus:outline-none transition-all"
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="p-1 absolute right-2 top-1/2 -translate-y-1/2 text-slate-400"
+                        className="p-1 absolute right-2 top-1/2 -translate-y-1/2 text-black/60 dark:text-slate-400"
                       >
                         {showPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
                       </button>
@@ -556,7 +533,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   <div>
                     <label
                       htmlFor="signup-confirm-pwd"
-                      className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1"
+                      className="block text-xs font-black text-black dark:text-slate-300 uppercase tracking-wider mb-1"
                     >
                       Confirm Password *
                     </label>
@@ -564,15 +541,15 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                       <input
                         id="signup-confirm-pwd"
                         type={showConfirmPassword ? 'text' : 'password'}
-                        placeholder="Re-enter password"
+                        placeholder="Re-enter"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        className="w-full px-3 py-2 bg-slate-50 dark:bg-[#0B0C1E] border border-slate-200 dark:border-white/15 rounded-xl text-sm text-[#171A3B] dark:text-white focus:bg-white dark:focus:bg-[#0F1129] focus:border-[#5145FF] focus-visible:outline-none transition-all"
+                        className="w-full px-3 py-2.5 bg-[#FAF7EE] dark:bg-[#0E131F] border-2 border-black rounded-xl text-sm font-bold text-black dark:text-white focus:bg-white focus:outline-none transition-all"
                       />
                       <button
                         type="button"
                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                        className="p-1 absolute right-2 top-1/2 -translate-y-1/2 text-slate-400"
+                        className="p-1 absolute right-2 top-1/2 -translate-y-1/2 text-black/60 dark:text-slate-400"
                       >
                         {showConfirmPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
                       </button>
@@ -581,15 +558,15 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 </div>
 
                 <div className="pt-1">
-                  <label className="flex items-start gap-2.5 text-xs text-slate-600 dark:text-slate-400 cursor-pointer select-none">
+                  <label className="flex items-start gap-2.5 text-xs font-bold text-black/80 dark:text-slate-400 cursor-pointer select-none">
                     <input
                       type="checkbox"
                       checked={agreedToTerms}
                       onChange={(e) => setAgreedToTerms(e.target.checked)}
-                      className="w-4 h-4 rounded text-[#5145FF] accent-[#5145FF] mt-0.5"
+                      className="w-4 h-4 rounded text-black accent-[#2154FE] border-2 border-black mt-0.5"
                     />
                     <span>
-                      I agree to the Terms of Care & Privacy Policy and consent to appointment notifications on my mobile number.
+                      I agree to the Terms of Care & Privacy Policy and consent to appointment SMS notifications.
                     </span>
                   </label>
                 </div>
@@ -597,10 +574,10 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-3.5 px-4 bg-gradient-to-r from-[#5145FF] via-[#8957FF] to-[#E34AD7] hover:opacity-95 text-white font-bold rounded-2xl text-sm shadow-aurora-indigo transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
+                  className="w-full py-4 px-4 bg-[#FFCC24] hover:bg-[#F5C21B] text-black font-black rounded-full text-sm border-2 border-black shadow-neo hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   {isLoading ? 'Setting Up Account...' : 'Complete Registration'}
-                  <CheckCircle2 className="w-4 h-4" />
+                  <CheckCircle2 className="w-4 h-4 stroke-[3]" />
                 </button>
               </motion.form>
             )}
@@ -608,9 +585,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             {/* DIVIDER & QUICK EXPLORE DEMO BUTTON */}
             <div className="relative py-2 text-center">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-slate-200 dark:border-white/10" />
+                <div className="w-full border-t-2 border-black/10 dark:border-white/10" />
               </div>
-              <span className="relative px-3 bg-white dark:bg-[#151838] text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-400">
+              <span className="relative px-3 bg-white dark:bg-[#182032] text-[11px] font-black uppercase tracking-wider text-black/60 dark:text-slate-400">
                 Or Instant Preview
               </span>
             </div>
@@ -618,21 +595,20 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             <button
               type="button"
               onClick={handleQuickDemoAccess}
-              className="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-[#F0E8FF] via-[#FFFDF8] to-[#B9F4D0] dark:from-[#231B4D] dark:via-[#161B3D] dark:to-[#12362C] border border-[#8957FF]/30 hover:border-[#5145FF] text-[#5145FF] dark:text-[#A594FD] font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 hover:shadow-xs active:scale-[0.98]"
+              className="w-full py-3.5 px-4 rounded-full bg-[#FAF7EE] hover:bg-white text-black font-black text-xs sm:text-sm border-2 border-black shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Sparkles className="w-4 h-4 text-[#E34AD7]" />
+              <Sparkles className="w-4 h-4 fill-black text-black" />
               <span>Explore Demo Account (1-Click)</span>
             </button>
-
             {/* Privacy notice footer */}
-            <div className="text-[11px] text-slate-400 dark:text-slate-500 text-center leading-relaxed">
+            <div className="text-[11px] text-black/60 dark:text-slate-400 text-center font-bold leading-relaxed">
               {isSupabaseConfigured
-                ? 'Your password is hashed by Supabase Auth. Your profile and appointments are protected by row-level security.'
-                : 'Local demo mode is active. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to connect the real backend.'}
+                ? 'Your password is encrypted. Your profile and appointments are protected.'
+                : 'Local demo mode is active. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to connect live backend.'}
             </div>
 
-            <div className="text-[11px] text-slate-400 dark:text-slate-500 text-center leading-relaxed">
-              Doctors: use the <strong className="text-[#5145FF] dark:text-[#A594FD]">Doctor Portal</strong> in the top
+            <div className="text-[11px] text-black/60 dark:text-slate-400 text-center font-bold leading-relaxed">
+              Doctors: use the <strong className="text-[#2154FE] dark:text-[#FFCC24]">Doctor Portal</strong> in the top
               navigation to sign in to your dashboard.
             </div>
           </div>

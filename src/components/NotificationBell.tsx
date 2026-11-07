@@ -102,13 +102,13 @@ export const NotificationBell: React.FC<NotificationBellProps> = ({ user }) => {
       <button
         type="button"
         onClick={handleOpen}
-        className="relative p-2.5 rounded-2xl border bg-white/90 border-slate-200/80 text-[#171A3B] shadow-xs dark:bg-[#151838]/90 dark:border-white/10 dark:text-slate-200 hover:bg-[#F0E8FF]/60 dark:hover:bg-white/10 transition-all cursor-pointer"
+        className="relative p-2.5 rounded-xl border-2 border-black bg-white dark:bg-[#182032] text-black dark:text-slate-200 shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all cursor-pointer"
         aria-label={`Notifications${unreadCount ? ` (${unreadCount} unread)` : ''}`}
         aria-expanded={open}
       >
-        <Bell className="w-4 h-4" />
+        <Bell className="w-4 h-4 stroke-[2.5]" />
         {unreadCount > 0 && (
-          <span className="absolute -top-1 -right-1 min-w-4 h-4 px-1 rounded-full bg-[#FF745C] text-white text-[10px] font-black flex items-center justify-center shadow-md">
+          <span className="absolute -top-1.5 -right-1.5 min-w-4 h-4 px-1 rounded-full bg-[#FF6B8B] text-black border border-black text-[10px] font-black flex items-center justify-center shadow-neo-sm">
             {unreadCount > 9 ? '9+' : unreadCount}
           </span>
         )}
@@ -121,14 +121,14 @@ export const NotificationBell: React.FC<NotificationBellProps> = ({ user }) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
             transition={{ duration: 0.15 }}
-            className="absolute right-0 mt-2 w-80 sm:w-96 max-w-[calc(100vw-2rem)] bg-white dark:bg-[#151838] rounded-2xl shadow-xl border border-slate-100 dark:border-white/10 z-50 overflow-hidden"
+            className="absolute right-0 mt-2 w-80 sm:w-96 max-w-[calc(100vw-2rem)] bg-white dark:bg-[#182032] rounded-2xl shadow-neo-lg border-2 border-black z-50 overflow-hidden"
           >
-            <div className="flex items-center justify-between p-3.5 border-b border-slate-100 dark:border-white/10">
+            <div className="flex items-center justify-between p-3.5 border-b-2 border-black bg-[#FAF7EE] dark:bg-[#0E131F]">
               <div className="flex items-center gap-2">
-                <BellRing className="w-4 h-4 text-[#5145FF] dark:text-[#16CBE5]" />
-                <span className="text-sm font-bold text-[#171A3B] dark:text-white">Notifications</span>
+                <BellRing className="w-4 h-4 text-black dark:text-[#FFCC24]" />
+                <span className="text-sm font-black text-black dark:text-white">Notifications</span>
                 {unreadCount > 0 && (
-                  <span className="px-1.5 py-0.5 rounded-full bg-[#F0E8FF] dark:bg-[#5145FF]/20 text-[#5145FF] dark:text-[#A594FD] text-[10px] font-black">
+                  <span className="px-2 py-0.5 rounded-full bg-[#FFCC24] text-black text-[10px] font-black border border-black">
                     {unreadCount} new
                   </span>
                 )}
@@ -137,7 +137,7 @@ export const NotificationBell: React.FC<NotificationBellProps> = ({ user }) => {
                 <button
                   type="button"
                   onClick={handleMarkAllRead}
-                  className="text-[11px] font-bold text-[#5145FF] dark:text-[#A594FD] hover:underline flex items-center gap-1 cursor-pointer"
+                  className="text-[11px] font-black text-black dark:text-[#FFCC24] hover:underline flex items-center gap-1 cursor-pointer"
                 >
                   <CheckCheck className="w-3.5 h-3.5" />
                   Mark all read
@@ -160,9 +160,8 @@ export const NotificationBell: React.FC<NotificationBellProps> = ({ user }) => {
                     key={notification.id}
                     type="button"
                     onClick={() => handleMarkRead(notification)}
-                    className={`w-full text-left p-3.5 transition-colors hover:bg-slate-50 dark:hover:bg-white/5 ${
-                      notification.isRead ? 'opacity-70' : 'bg-[#F0E8FF]/30 dark:bg-[#5145FF]/10'
-                    }`}
+                    className={`w-full text-left p-3.5 transition-colors hover:bg-slate-50 dark:hover:bg-white/5 ${notification.isRead ? 'opacity-70' : 'bg-[#F0E8FF]/30 dark:bg-[#5145FF]/10'
+                      }`}
                   >
                     <div className="flex items-start gap-2.5">
                       <div className="p-1.5 rounded-lg bg-[#F0E8FF] dark:bg-[#5145FF]/25 text-[#5145FF] dark:text-[#A594FD] shrink-0 mt-0.5">

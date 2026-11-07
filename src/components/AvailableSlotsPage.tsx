@@ -69,19 +69,19 @@ export const AvailableSlotsPage: React.FC<AvailableSlotsPageProps> = ({ onBookDe
   const getDepartmentIcon = (id: DepartmentId) => {
     switch (id) {
       case 'general-medicine':
-        return <Stethoscope className="w-5 h-5 text-[#00CFA8]" />;
+        return <Stethoscope className="w-5 h-5 text-black" />;
       case 'cardiology':
-        return <HeartPulse className="w-5 h-5 text-[#FF745C]" />;
+        return <HeartPulse className="w-5 h-5 text-black" />;
       case 'neurology':
-        return <Brain className="w-5 h-5 text-[#8957FF]" />;
+        return <Brain className="w-5 h-5 text-black" />;
       case 'orthopedics':
-        return <Activity className="w-5 h-5 text-[#16CBE5]" />;
+        return <Activity className="w-5 h-5 text-black" />;
       case 'pediatrics':
-        return <Baby className="w-5 h-5 text-[#FF9B54]" />;
+        return <Baby className="w-5 h-5 text-black" />;
       case 'dermatology':
-        return <Sparkles className="w-5 h-5 text-[#E34AD7]" />;
+        return <Sparkles className="w-5 h-5 text-black" />;
       default:
-        return <Stethoscope className="w-5 h-5 text-[#5145FF]" />;
+        return <Stethoscope className="w-5 h-5 text-black" />;
     }
   };
 
@@ -98,96 +98,96 @@ export const AvailableSlotsPage: React.FC<AvailableSlotsPageProps> = ({ onBookDe
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
       {/* Title & Explanatory Kicker */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-8 border-b border-slate-200 dark:border-white/10">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-8 border-b-2 border-black dark:border-white/20">
         <div>
-          <span className="text-xs font-black uppercase tracking-wider text-[#5145FF] dark:text-[#16CBE5] block mb-1">
-            Aurora Care · Live Capacity Radar
+          <span className="text-xs font-black uppercase tracking-wider text-black bg-[#FFCC24] px-3 py-1 rounded-full border-2 border-black inline-block mb-2 shadow-neo-sm">
+            Live Capacity Radar
           </span>
-          <h1 className="text-3xl sm:text-4xl font-black text-[#171A3B] dark:text-white">
+          <h1 className="text-4xl sm:text-5xl font-black text-black dark:text-white tracking-tight">
             Available Hospital Slots
           </h1>
-          <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
-            Inspect real-time appointment availability across all clinics without completing a form.
+          <p className="text-black/70 dark:text-slate-400 font-bold text-sm sm:text-base mt-1">
+            Real-time appointment capacity across all 6 clinics with transparent instant booking.
           </p>
         </div>
 
-        <div className="self-start sm:self-auto flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#16CBE5]/15 dark:bg-[#16CBE5]/20 border border-[#16CBE5]/30 text-[#0e7490] dark:text-[#16CBE5] text-xs font-bold">
-          <Info className="w-4 h-4 shrink-0 text-[#16CBE5]" />
-          <span>Synchronized with demo booking engine</span>
+        <div className="self-start sm:self-auto flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-[#182032] border-2 border-black shadow-neo-sm text-xs font-black text-black dark:text-white">
+          <Info className="w-4 h-4 shrink-0 text-[#2154FE]" />
+          <span>Updated Live · Zero Waiting Loops</span>
         </div>
       </div>
 
-      {/* VIBRANT PASTEL / COSMIC KPI STRIP */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
-        {/* Total Slots (Pastel Lavender / Deep Cosmic) */}
-        <div className="p-5 rounded-3xl bg-gradient-to-br from-[#F0E8FF] to-white dark:from-[#211F4E] dark:to-[#151838] border border-[#8957FF]/20 dark:border-white/10 shadow-aurora-card space-y-1">
-          <div className="flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400">
-            <span>Total Daily Slots</span>
-            <Building2 className="w-4 h-4 text-[#8957FF] dark:text-[#16CBE5]" />
+      {/* VIBRANT POP KPI STRIP (Matching Good Boy Pop Brutalism) */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-8">
+        {/* Total Slots (Sunshine Yellow) */}
+        <div className="p-6 rounded-3xl bg-[#FFCC24] border-2 border-black shadow-neo text-black space-y-1">
+          <div className="flex items-center justify-between text-xs font-black">
+            <span>Daily Slots</span>
+            <Building2 className="w-4 h-4" />
           </div>
-          <span className="text-3xl sm:text-4xl font-black text-[#5145FF] dark:text-[#16CBE5] block font-mono">
+          <span className="text-3xl sm:text-4xl font-black block font-mono">
             {statsData.totalSlots}
           </span>
-          <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium block">
-            Across 6 outpatient clinics
+          <span className="text-[11px] font-bold opacity-80 block">
+            Across 6 clinics
           </span>
         </div>
 
-        {/* Available Slots (Fresh Mint & Teal) */}
-        <div className="p-5 rounded-3xl bg-gradient-to-br from-[#B9F4D0]/30 to-white dark:from-[#063b31] dark:to-[#151838] border border-[#00CFA8]/30 dark:border-white/10 shadow-aurora-card space-y-1">
-          <div className="flex items-center justify-between text-xs font-bold text-[#065f46] dark:text-[#B9F4D0]">
-            <span>Available Right Now</span>
-            <CheckCircle2 className="w-4 h-4 text-[#00CFA8]" />
+        {/* Available Slots (Fresh Mint) */}
+        <div className="p-6 rounded-3xl bg-[#00D09C] border-2 border-black shadow-neo text-black space-y-1">
+          <div className="flex items-center justify-between text-xs font-black">
+            <span>Available Now</span>
+            <CheckCircle2 className="w-4 h-4" />
           </div>
-          <span className="text-3xl sm:text-4xl font-black text-[#00CFA8] block font-mono">
+          <span className="text-3xl sm:text-4xl font-black block font-mono">
             {statsData.totalAvailable}
           </span>
-          <span className="text-[11px] text-slate-600 dark:text-slate-400 font-medium block">
-            Ready for instant booking
+          <span className="text-[11px] font-bold opacity-80 block">
+            Ready to book
           </span>
         </div>
 
-        {/* Booked Slots (Warm Tangerine) */}
-        <div className="p-5 rounded-3xl bg-gradient-to-br from-[#FF9B54]/15 to-white dark:from-[#3d240e] dark:to-[#151838] border border-[#FF9B54]/30 dark:border-white/10 shadow-aurora-card space-y-1">
-          <div className="flex items-center justify-between text-xs font-bold text-[#9a3412] dark:text-[#FFC857]">
-            <span>Booked Consultations</span>
-            <Clock className="w-4 h-4 text-[#FF9B54]" />
+        {/* Booked Slots (Bubblegum Pink) */}
+        <div className="p-6 rounded-3xl bg-[#FF6B8B] border-2 border-black shadow-neo text-black space-y-1">
+          <div className="flex items-center justify-between text-xs font-black">
+            <span>Confirmed Visits</span>
+            <Clock className="w-4 h-4" />
           </div>
-          <span className="text-3xl sm:text-4xl font-black text-[#FF9B54] block font-mono">
+          <span className="text-3xl sm:text-4xl font-black block font-mono">
             {statsData.totalBooked}
           </span>
-          <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium block">
-            Confirmed patient visits
+          <span className="text-[11px] font-bold opacity-80 block">
+            Reserved patients
           </span>
         </div>
 
-        {/* Departments with Openings (Tropical Cyan) */}
-        <div className="p-5 rounded-3xl bg-gradient-to-br from-[#16CBE5]/15 to-white dark:from-[#0c3140] dark:to-[#151838] border border-[#16CBE5]/30 dark:border-white/10 shadow-aurora-card space-y-1">
-          <div className="flex items-center justify-between text-xs font-bold text-[#0e7490] dark:text-[#16CBE5]">
-            <span>Clinics with Openings</span>
-            <Stethoscope className="w-4 h-4 text-[#16CBE5]" />
+        {/* Departments with Openings (Electric Blue with White Text) */}
+        <div className="p-6 rounded-3xl bg-[#2154FE] border-2 border-black shadow-neo text-white space-y-1">
+          <div className="flex items-center justify-between text-xs font-black">
+            <span>Open Specialties</span>
+            <Stethoscope className="w-4 h-4" />
           </div>
-          <span className="text-3xl sm:text-4xl font-black text-[#16CBE5] block font-mono">
+          <span className="text-3xl sm:text-4xl font-black block font-mono">
             {statsData.departmentsWithAvailability} / 6
           </span>
-          <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium block">
-            Specialties accepting visits
+          <span className="text-[11px] font-bold opacity-80 block">
+            Accepting walk-ins
           </span>
         </div>
       </div>
 
       {/* FILTER CONTROL BAR */}
-      <div className="mt-8 bg-white/90 dark:bg-[#151838]/85 backdrop-blur-md p-6 rounded-3xl border border-slate-200/80 dark:border-white/10 shadow-aurora-card space-y-5">
+      <div className="mt-8 bg-white dark:bg-[#182032] p-6 sm:p-7 rounded-3xl border-2 border-black shadow-neo space-y-6">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-black uppercase tracking-wider text-[#171A3B] dark:text-white flex items-center gap-2">
-            <Filter className="w-4 h-4 text-[#5145FF] dark:text-[#16CBE5]" />
+          <span className="text-xs font-black uppercase tracking-wider text-black dark:text-white flex items-center gap-2">
+            <Filter className="w-4 h-4 text-[#2154FE]" />
             <span>Interactive Capacity Filters</span>
           </span>
 
           <button
             type="button"
             onClick={refreshStats}
-            className="text-xs font-bold text-[#5145FF] dark:text-[#16CBE5] hover:underline flex items-center gap-1.5 cursor-pointer"
+            className="text-xs font-black text-black dark:text-white hover:text-[#2154FE] flex items-center gap-1.5 cursor-pointer underline underline-offset-4"
           >
             <RefreshCw className="w-3.5 h-3.5" />
             <span>Refresh Counts</span>
@@ -195,12 +195,12 @@ export const AvailableSlotsPage: React.FC<AvailableSlotsPageProps> = ({ onBookDe
         </div>
 
         {/* 7-Day Calendar Ribbon */}
-        <div className="space-y-1.5">
-          <label className="text-xs font-bold text-slate-600 dark:text-slate-300 flex items-center gap-1.5">
-            <Calendar className="w-3.5 h-3.5 text-[#5145FF] dark:text-[#16CBE5]" />
-            <span>Target Date</span>
+        <div className="space-y-2">
+          <label className="text-xs font-black text-black dark:text-slate-200 flex items-center gap-1.5">
+            <Calendar className="w-3.5 h-3.5 text-[#2154FE]" />
+            <span>Select Date</span>
           </label>
-          <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
+          <div className="grid grid-cols-4 sm:grid-cols-7 gap-2.5">
             {datesList.map((d) => {
               const isSelected = selectedDate === d.dateString;
               return (
@@ -208,14 +208,14 @@ export const AvailableSlotsPage: React.FC<AvailableSlotsPageProps> = ({ onBookDe
                   key={d.dateString}
                   type="button"
                   onClick={() => setSelectedDate(d.dateString)}
-                  className={`p-2.5 rounded-2xl text-center border text-xs transition-all cursor-pointer ${
+                  className={`p-3 rounded-2xl text-center border-2 border-black text-xs transition-all cursor-pointer ${
                     isSelected
-                      ? 'bg-gradient-to-r from-[#5145FF] to-[#8957FF] border-[#5145FF] text-white font-black shadow-aurora-indigo'
-                      : 'bg-[#FFFDF8] dark:bg-[#0B0C1E] border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-white/20'
+                      ? 'bg-[#FFCC24] text-black font-black shadow-neo translate-y-[-2px]'
+                      : 'bg-[#FAF7EE] dark:bg-[#0E131F] text-black dark:text-slate-300 font-bold hover:bg-white'
                   }`}
                 >
-                  <span className="block opacity-80 text-[10px] uppercase font-bold">{d.weekday}</span>
-                  <span className="block font-black mt-0.5">{d.label}</span>
+                  <span className="block opacity-75 text-[10px] uppercase font-black">{d.weekday}</span>
+                  <span className="block font-black mt-0.5 text-sm">{d.label}</span>
                 </button>
               );
             })}
@@ -223,16 +223,16 @@ export const AvailableSlotsPage: React.FC<AvailableSlotsPageProps> = ({ onBookDe
         </div>
 
         {/* Dropdown Filters */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-3 border-t border-slate-100 dark:border-white/10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t-2 border-black/10 dark:border-white/10">
           <div>
-            <label htmlFor="slot-filter-dept" className="block text-xs font-bold text-slate-600 dark:text-slate-300 uppercase mb-1">
+            <label htmlFor="slot-filter-dept" className="block text-xs font-black text-black dark:text-slate-300 uppercase mb-1">
               Filter by Specialty
             </label>
             <select
               id="slot-filter-dept"
               value={selectedDeptFilter}
               onChange={(e) => setSelectedDeptFilter(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-50 dark:bg-[#0B0C1E] border border-slate-200 dark:border-white/10 rounded-xl text-xs font-semibold text-[#171A3B] dark:text-white focus:border-[#5145FF] focus-visible:outline-none"
+              className="w-full px-3.5 py-2.5 bg-[#FAF7EE] dark:bg-[#0E131F] border-2 border-black rounded-xl text-xs font-black text-black dark:text-white focus:outline-none"
             >
               <option value="all">All Specialties (6 Clinics)</option>
               {DEPARTMENTS.map((dept) => (
@@ -244,14 +244,14 @@ export const AvailableSlotsPage: React.FC<AvailableSlotsPageProps> = ({ onBookDe
           </div>
 
           <div>
-            <label htmlFor="slot-filter-period" className="block text-xs font-bold text-slate-600 dark:text-slate-300 uppercase mb-1">
+            <label htmlFor="slot-filter-period" className="block text-xs font-black text-black dark:text-slate-300 uppercase mb-1">
               Time of Day
             </label>
             <select
               id="slot-filter-period"
               value={selectedPeriodFilter}
               onChange={(e) => setSelectedPeriodFilter(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-50 dark:bg-[#0B0C1E] border border-slate-200 dark:border-white/10 rounded-xl text-xs font-semibold text-[#171A3B] dark:text-white focus:border-[#5145FF] focus-visible:outline-none"
+              className="w-full px-3.5 py-2.5 bg-[#FAF7EE] dark:bg-[#0E131F] border-2 border-black rounded-xl text-xs font-black text-black dark:text-white focus:outline-none"
             >
               <option value="all">Anytime (Morning, Afternoon, Evening)</option>
               <option value="morning">Morning Only (09:00 AM – 12:00 PM)</option>
@@ -261,14 +261,14 @@ export const AvailableSlotsPage: React.FC<AvailableSlotsPageProps> = ({ onBookDe
           </div>
 
           <div className="flex items-end">
-            <label className="flex items-center gap-2.5 p-2 rounded-xl bg-slate-50 dark:bg-[#0B0C1E] border border-slate-200 dark:border-white/10 w-full cursor-pointer hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+            <label className="flex items-center gap-2.5 p-2.5 rounded-xl bg-[#FAF7EE] dark:bg-[#0E131F] border-2 border-black w-full cursor-pointer hover:bg-white transition-colors">
               <input
                 type="checkbox"
                 checked={availableOnly}
                 onChange={(e) => setAvailableOnly(e.target.checked)}
-                className="w-4 h-4 text-[#5145FF] rounded accent-[#5145FF]"
+                className="w-4 h-4 text-black accent-[#2154FE] rounded border-2 border-black"
               />
-              <span className="text-xs font-bold text-slate-700 dark:text-slate-300">
+              <span className="text-xs font-black text-black dark:text-slate-300">
                 Show Open Clinics Only
               </span>
             </label>
@@ -298,63 +298,63 @@ export const AvailableSlotsPage: React.FC<AvailableSlotsPageProps> = ({ onBookDe
               key={deptStat.departmentId}
               whileHover={{ y: -4 }}
               transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-              className="bg-white/95 dark:bg-[#151838]/90 backdrop-blur-md rounded-3xl p-6 border border-slate-200/80 dark:border-white/10 shadow-aurora-card hover:shadow-aurora-card-hover transition-all flex flex-col justify-between space-y-5"
+              className="bg-white dark:bg-[#182032] rounded-3xl p-6 border-2 border-black shadow-neo hover:shadow-neo-lg transition-all flex flex-col justify-between space-y-5"
             >
               <div className="space-y-4">
                 {/* Header: Icon, Name, and Status Badge */}
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <div className="p-3 rounded-2xl bg-slate-50 dark:bg-[#0B0C1E] border border-slate-100 dark:border-white/10 shadow-xs">
+                    <div className="p-3 rounded-2xl bg-[#FFCC24] border-2 border-black shadow-neo-sm">
                       {getDepartmentIcon(deptStat.departmentId)}
                     </div>
                     <div>
-                      <h3 className="text-lg font-black text-[#171A3B] dark:text-white leading-tight">
+                      <h3 className="text-lg font-black text-black dark:text-white leading-tight">
                         {deptStat.departmentName}
                       </h3>
-                      <span className="text-xs text-slate-400 dark:text-slate-400">
+                      <span className="text-xs font-bold text-black/60 dark:text-slate-400">
                         {dept?.location.split(',')[0]}
                       </span>
                     </div>
                   </div>
 
-                  {/* Status Badges with Clear Written Text */}
+                  {/* Status Badges */}
                   <div>
                     {isFullyBooked ? (
-                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-bold bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-800/40">
+                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-black bg-rose-200 text-black border-2 border-black">
                         <XCircle className="w-3.5 h-3.5" />
-                        <span>Fully Booked</span>
+                        <span>Booked</span>
                       </span>
                     ) : isLimited ? (
-                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-bold bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800/40">
+                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-black bg-[#FFCC24] text-black border-2 border-black">
                         <AlertTriangle className="w-3.5 h-3.5" />
-                        <span>Limited Slots</span>
+                        <span>Limited</span>
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-bold bg-[#B9F4D0] dark:bg-[#00CFA8]/20 text-[#065f46] dark:text-[#B9F4D0] border border-[#00CFA8]/40">
+                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-black bg-[#00D09C] text-black border-2 border-black">
                         <CheckCircle2 className="w-3.5 h-3.5" />
-                        <span>Available</span>
+                        <span>Open</span>
                       </span>
                     )}
                   </div>
                 </div>
 
                 {/* Numerical Breakdown Box */}
-                <div className="p-4 rounded-2xl bg-[#FFFDF8] dark:bg-[#0B0C1E] border border-slate-200 dark:border-white/10 grid grid-cols-3 text-center text-xs">
+                <div className="p-3.5 rounded-2xl bg-[#FAF7EE] dark:bg-[#0E131F] border-2 border-black grid grid-cols-3 text-center text-xs">
                   <div>
-                    <span className="text-[10px] text-slate-400 dark:text-slate-400 font-bold uppercase block">Total</span>
-                    <span className="text-base font-black text-[#171A3B] dark:text-white font-mono block mt-0.5">
+                    <span className="text-[10px] text-black/60 dark:text-slate-400 font-black uppercase block">Total</span>
+                    <span className="text-base font-black text-black dark:text-white font-mono block mt-0.5">
                       {deptStat.totalSlots}
                     </span>
                   </div>
-                  <div className="border-x border-slate-200 dark:border-white/10">
-                    <span className="text-[10px] text-slate-400 dark:text-slate-400 font-bold uppercase block">Booked</span>
-                    <span className="text-base font-bold text-slate-600 dark:text-slate-300 font-mono block mt-0.5">
+                  <div className="border-x-2 border-black/20 dark:border-white/20">
+                    <span className="text-[10px] text-black/60 dark:text-slate-400 font-black uppercase block">Booked</span>
+                    <span className="text-base font-black text-black/80 dark:text-slate-300 font-mono block mt-0.5">
                       {deptStat.bookedSlots}
                     </span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-[#00CFA8] font-bold uppercase block">Available</span>
-                    <span className="text-base font-black text-[#00CFA8] font-mono block mt-0.5">
+                    <span className="text-[10px] text-black font-black uppercase block">Open</span>
+                    <span className="text-base font-black text-[#2154FE] dark:text-[#FFCC24] font-mono block mt-0.5">
                       {deptStat.availableSlots}
                     </span>
                   </div>
@@ -362,16 +362,16 @@ export const AvailableSlotsPage: React.FC<AvailableSlotsPageProps> = ({ onBookDe
 
                 {/* Progress Bar */}
                 <div className="space-y-1">
-                  <div className="flex justify-between text-[11px] font-semibold text-slate-500 dark:text-slate-400">
-                    <span>Occupancy</span>
+                  <div className="flex justify-between text-[11px] font-black text-black/70 dark:text-slate-300">
+                    <span>Capacity Filled</span>
                     <span className="font-mono">
                       {Math.round((deptStat.bookedSlots / deptStat.totalSlots) * 100)}%
                     </span>
                   </div>
-                  <div className="w-full h-2 rounded-full bg-slate-100 dark:bg-white/10 overflow-hidden">
+                  <div className="w-full h-3 rounded-full bg-[#FAF7EE] dark:bg-[#0E131F] border-2 border-black overflow-hidden p-0.5">
                     <div
-                      className={`h-full transition-all duration-300 ${
-                        isFullyBooked ? 'bg-rose-500' : isLimited ? 'bg-[#FF9B54]' : 'bg-[#00CFA8]'
+                      className={`h-full rounded-full transition-all duration-300 ${
+                        isFullyBooked ? 'bg-rose-500' : isLimited ? 'bg-[#FFCC24]' : 'bg-[#00D09C]'
                       }`}
                       style={{
                         width: `${(deptStat.bookedSlots / deptStat.totalSlots) * 100}%`,
@@ -382,24 +382,24 @@ export const AvailableSlotsPage: React.FC<AvailableSlotsPageProps> = ({ onBookDe
 
                 {/* Sample Slots Preview */}
                 <div className="space-y-1.5 pt-1">
-                  <span className="text-[11px] font-bold text-slate-400 dark:text-slate-400 block uppercase">
+                  <span className="text-[11px] font-black text-black/60 dark:text-slate-400 block uppercase">
                     Sample Openings ({selectedDate}):
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {visibleSlots.slice(0, 5).map((s) => (
                       <span
                         key={s.id}
-                        className={`text-[10px] font-mono px-2 py-0.5 rounded-md border ${
+                        className={`text-[11px] font-mono px-2.5 py-1 rounded-lg border-2 border-black font-black ${
                           s.isBooked
-                            ? 'bg-slate-100 dark:bg-white/5 text-slate-400 dark:text-slate-600 line-through border-slate-200 dark:border-white/5'
-                            : 'bg-[#F0E8FF] dark:bg-[#8957FF]/20 text-[#5145FF] dark:text-[#16CBE5] border-[#8957FF]/30 dark:border-[#8957FF]/40 font-bold'
+                            ? 'bg-neutral-200 text-neutral-400 line-through'
+                            : 'bg-[#FFCC24] text-black shadow-neo-sm'
                         }`}
                       >
                         {s.time}
                       </span>
                     ))}
                     {visibleSlots.length > 5 && (
-                      <span className="text-[10px] text-slate-400 py-0.5 font-medium">
+                      <span className="text-[11px] font-black text-black/60 dark:text-slate-400 self-center">
                         +{visibleSlots.length - 5} more
                       </span>
                     )}
@@ -408,19 +408,19 @@ export const AvailableSlotsPage: React.FC<AvailableSlotsPageProps> = ({ onBookDe
               </div>
 
               {/* Action Button */}
-              <div className="pt-2 border-t border-slate-100 dark:border-white/10">
+              <div className="pt-3 border-t-2 border-black/10 dark:border-white/10">
                 <button
                   type="button"
                   disabled={isFullyBooked}
                   onClick={() => onBookDepartment(deptStat.departmentId, selectedDate)}
-                  className={`w-full py-3 px-4 font-bold text-xs sm:text-sm rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer ${
+                  className={`w-full py-3 px-4 rounded-full font-black text-xs border-2 border-black flex items-center justify-center gap-2 transition-all cursor-pointer ${
                     isFullyBooked
-                      ? 'bg-slate-100 dark:bg-white/5 text-slate-400 dark:text-slate-500 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-[#5145FF] to-[#8957FF] text-white shadow-aurora-indigo hover:opacity-95 active:scale-[0.98]'
+                      ? 'bg-neutral-200 text-neutral-400 cursor-not-allowed'
+                      : 'bg-[#2154FE] hover:bg-[#1946DF] text-white shadow-neo hover:translate-x-[-1px] hover:translate-y-[-1px]'
                   }`}
                 >
-                  <span>{isFullyBooked ? 'Fully Booked for Selected Day' : 'Reserve Appointment'}</span>
-                  {!isFullyBooked && <ArrowRight className="w-4 h-4" />}
+                  <span>{isFullyBooked ? 'Clinic Full Today' : 'Book Open Slot'}</span>
+                  {!isFullyBooked && <ArrowRight className="w-4 h-4 stroke-[3]" />}
                 </button>
               </div>
             </motion.div>

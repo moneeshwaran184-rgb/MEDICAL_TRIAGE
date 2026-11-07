@@ -188,45 +188,43 @@ const DoctorLogin: React.FC<Omit<DoctorPortalPageProps, 'onSignOut'> & { onSignO
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white/95 dark:bg-[#151838]/90 backdrop-blur-md rounded-3xl border border-slate-200/80 dark:border-white/10 shadow-aurora-card overflow-hidden"
+          className="bg-white dark:bg-[#182032] rounded-3xl border-2 border-black shadow-neo overflow-hidden"
         >
-          <div className="h-2 w-full bg-gradient-to-r from-[#5145FF] via-[#00CFA8] to-[#16CBE5]" />
+          <div className="h-3 w-full bg-[#FFCC24] border-b-2 border-black" />
           <div className="p-6 sm:p-8 space-y-6">
             <div className="space-y-1.5">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#B9F4D0]/50 dark:bg-[#00CFA8]/15 text-[#065f46] dark:text-[#B9F4D0] text-xs font-bold tracking-wide">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFCC24] text-black text-xs font-black border-2 border-black shadow-neo-sm">
                 <ShieldCheck className="w-3.5 h-3.5" />
                 Clinical Staff Access
               </span>
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-[#171A3B] dark:text-white">
+              <h1 className="text-2xl sm:text-3xl font-black text-black dark:text-white">
                 Doctor Portal
               </h1>
-              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              <p className="text-xs sm:text-sm text-black/70 dark:text-slate-400 font-bold">
                 Sign in to view your assigned appointments, patient details, and consultation status.
               </p>
             </div>
 
             {!isSupabaseConfigured && (
-              <div className="p-3.5 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-200 text-xs flex items-start gap-2.5">
-                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+              <div className="p-3.5 rounded-2xl bg-[#FFCC24] text-black border-2 border-black text-xs font-bold flex items-start gap-2.5 shadow-neo-sm">
+                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 stroke-[2.5]" />
                 <span>
-                  Supabase is not configured yet. Add <code className="font-bold">VITE_SUPABASE_URL</code> and{' '}
-                  <code className="font-bold">VITE_SUPABASE_ANON_KEY</code> to your <code>.env</code>, then run
-                  the SQL in <code>supabase/schema.sql</code>.
+                  Local demo mode active. Sign in with any of the demo doctor credentials below.
                 </span>
               </div>
             )}
 
             {currentUser && currentUser.role === 'patient' && (
-              <div className="p-3.5 rounded-2xl bg-[#F0E8FF] dark:bg-[#5145FF]/15 border border-[#8957FF]/30 text-xs flex items-start gap-2.5">
-                <User className="w-4 h-4 shrink-0 mt-0.5 text-[#5145FF]" />
+              <div className="p-3.5 rounded-2xl bg-[#FF6B8B] text-black border-2 border-black text-xs font-bold flex items-start gap-2.5 shadow-neo-sm">
+                <User className="w-4 h-4 shrink-0 mt-0.5 stroke-[2.5]" />
                 <div className="flex-1">
-                  <p className="font-bold text-[#171A3B] dark:text-white">
+                  <p className="font-black">
                     You are signed in as a patient ({currentUser.name}).
                   </p>
                   <button
                     type="button"
                     onClick={onSignOut}
-                    className="mt-1.5 text-[#5145FF] dark:text-[#A594FD] font-bold hover:underline cursor-pointer"
+                    className="mt-1.5 text-black font-black underline cursor-pointer"
                   >
                     Sign out to switch to a doctor account
                   </button>
@@ -235,8 +233,8 @@ const DoctorLogin: React.FC<Omit<DoctorPortalPageProps, 'onSignOut'> & { onSignO
             )}
 
             {error && (
-              <div className="p-3.5 rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 text-rose-800 dark:text-rose-200 text-xs flex items-center gap-2.5 font-medium">
-                <AlertCircle className="w-4 h-4 shrink-0 text-rose-600 dark:text-rose-400" />
+              <div className="p-3.5 rounded-2xl bg-[#FF6B8B] text-black border-2 border-black shadow-neo-sm text-xs flex items-center gap-2.5 font-black">
+                <AlertCircle className="w-4 h-4 shrink-0 stroke-[2.5]" />
                 <span>{error}</span>
               </div>
             )}
@@ -245,12 +243,12 @@ const DoctorLogin: React.FC<Omit<DoctorPortalPageProps, 'onSignOut'> & { onSignO
               <div>
                 <label
                   htmlFor="doctor-email"
-                  className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5"
+                  className="block text-xs font-black text-black dark:text-slate-300 uppercase tracking-wider mb-1.5"
                 >
                   Doctor Email
                 </label>
                 <div className="relative">
-                  <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <Mail className="w-4 h-4 text-black/60 dark:text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     id="doctor-email"
                     type="email"
@@ -259,7 +257,7 @@ const DoctorLogin: React.FC<Omit<DoctorPortalPageProps, 'onSignOut'> & { onSignO
                     placeholder="sarah.mitchell@aetherhospital.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-[#0B0C1E] border border-slate-200 dark:border-white/15 rounded-xl text-sm text-[#171A3B] dark:text-white focus:bg-white dark:focus:bg-[#0F1129] focus:border-[#5145FF] focus-visible:outline-none transition-all"
+                    className="w-full pl-10 pr-4 py-3 bg-[#FAF7EE] dark:bg-[#0E131F] border-2 border-black rounded-xl text-sm font-bold text-black dark:text-white focus:bg-white focus:outline-none transition-all"
                   />
                 </div>
               </div>
@@ -267,12 +265,12 @@ const DoctorLogin: React.FC<Omit<DoctorPortalPageProps, 'onSignOut'> & { onSignO
               <div>
                 <label
                   htmlFor="doctor-password"
-                  className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5"
+                  className="block text-xs font-black text-black dark:text-slate-300 uppercase tracking-wider mb-1.5"
                 >
                   Password
                 </label>
                 <div className="relative">
-                  <Lock className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <Lock className="w-4 h-4 text-black/60 dark:text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     id="doctor-password"
                     type={showPassword ? 'text' : 'password'}
@@ -281,12 +279,12 @@ const DoctorLogin: React.FC<Omit<DoctorPortalPageProps, 'onSignOut'> & { onSignO
                     placeholder="••••••••"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full pl-10 pr-10 py-2.5 bg-slate-50 dark:bg-[#0B0C1E] border border-slate-200 dark:border-white/15 rounded-xl text-sm text-[#171A3B] dark:text-white focus:bg-white dark:focus:bg-[#0F1129] focus:border-[#5145FF] focus-visible:outline-none transition-all"
+                    className="w-full pl-10 pr-10 py-3 bg-[#FAF7EE] dark:bg-[#0E131F] border-2 border-black rounded-xl text-sm font-bold text-black dark:text-white focus:bg-white focus:outline-none transition-all"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword((v) => !v)}
-                    className="p-1.5 absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer"
+                    className="p-1.5 absolute right-2.5 top-1/2 -translate-y-1/2 text-black/60 dark:text-slate-400 cursor-pointer"
                     aria-label={showPassword ? 'Hide password' : 'Show password'}
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -297,30 +295,29 @@ const DoctorLogin: React.FC<Omit<DoctorPortalPageProps, 'onSignOut'> & { onSignO
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3.5 px-4 bg-gradient-to-r from-[#00CFA8] to-[#16CBE5] hover:opacity-95 disabled:opacity-60 text-white font-bold rounded-2xl text-sm shadow-aurora-cyan transition-all flex items-center justify-center gap-2 active:scale-[0.98] cursor-pointer"
+                className="w-full py-4 px-4 bg-[#FFCC24] hover:bg-[#F5C21B] disabled:opacity-60 text-black font-black rounded-full text-sm border-2 border-black shadow-neo hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 {isLoading ? 'Signing In…' : 'Enter Doctor Dashboard'}
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 stroke-[3]" />
               </button>
             </form>
 
-            <p className="text-[11px] text-slate-400 dark:text-slate-500 text-center leading-relaxed">
+            <p className="text-[11px] text-black/60 dark:text-slate-400 text-center font-bold leading-relaxed">
               Only accounts with the <strong>doctor</strong> role can access the clinical dashboard.
               Patients should use the regular Sign In button.
             </p>
           </div>
         </motion.div>
 
-        {/* Demo credentials card */}
+        {/* Demo credentials card (Electric Blue Block with Thick Black Border) */}
         <div className="space-y-4">
-          <div className="p-6 rounded-3xl bg-gradient-to-br from-[#171A3B] via-[#211F4E] to-[#171A3B] text-white border border-white/10 shadow-2xl space-y-4">
+          <div className="p-6 rounded-3xl bg-[#2154FE] text-white border-2 border-black shadow-neo space-y-4">
             <div className="flex items-center gap-2">
-              <ClipboardList className="w-5 h-5 text-[#16CBE5]" />
-              <h2 className="text-lg font-bold">Demo Doctor Accounts</h2>
+              <ClipboardList className="w-5 h-5 stroke-[2.5]" />
+              <h2 className="text-xl font-black">Demo Doctor Accounts</h2>
             </div>
-            <p className="text-xs text-white/60 leading-relaxed">
-              These three doctors were created by the SQL seed. Each one has a separate dashboard
-              showing only their own appointments.
+            <p className="text-xs font-bold text-white/80 leading-relaxed">
+              Click any doctor to sign in or test real-time schedule management.
             </p>
 
             <div className="space-y-3">
@@ -329,25 +326,29 @@ const DoctorLogin: React.FC<Omit<DoctorPortalPageProps, 'onSignOut'> & { onSignO
                 return (
                   <div
                     key={doctor.email}
-                    className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-2"
+                    onClick={() => {
+                      setEmail(doctor.email);
+                      setPassword(doctor.password);
+                    }}
+                    className="p-4 rounded-2xl bg-white text-black border-2 border-black shadow-neo-sm space-y-2 cursor-pointer hover:bg-[#FFCC24] transition-colors"
                   >
                     <div className="flex items-center gap-2.5">
-                      <div className="p-2 rounded-xl bg-white/10">
-                        <Icon className={`w-4 h-4 ${doctor.color}`} />
+                      <div className="p-2 rounded-xl bg-black text-white border border-black">
+                        <Icon className="w-4 h-4" />
                       </div>
                       <div>
-                        <p className="text-sm font-bold">{doctor.name}</p>
-                        <p className="text-[11px] text-white/50">{doctor.department}</p>
+                        <p className="text-sm font-black">{doctor.name}</p>
+                        <p className="text-[11px] font-bold text-black/70">{doctor.department} · {doctor.specialty}</p>
                       </div>
                     </div>
-                    <div className="grid grid-cols-1 gap-1 text-[11px] font-mono">
-                      <div className="flex items-center justify-between gap-2 bg-black/20 rounded-lg px-2.5 py-1.5">
-                        <span className="text-white/40">email</span>
-                        <span className="text-[#B9F4D0] truncate">{doctor.email}</span>
+                    <div className="grid grid-cols-1 gap-1 text-[11px] font-mono font-bold">
+                      <div className="flex items-center justify-between gap-2 bg-[#FAF7EE] border border-black/20 rounded-lg px-2.5 py-1">
+                        <span className="text-black/60">email</span>
+                        <span className="truncate">{doctor.email}</span>
                       </div>
-                      <div className="flex items-center justify-between gap-2 bg-black/20 rounded-lg px-2.5 py-1.5">
-                        <span className="text-white/40">password</span>
-                        <span className="text-[#FFC857]">{doctor.password}</span>
+                      <div className="flex items-center justify-between gap-2 bg-[#FAF7EE] border border-black/20 rounded-lg px-2.5 py-1">
+                        <span className="text-black/60">password</span>
+                        <span className="text-[#2154FE] font-black">{doctor.password}</span>
                       </div>
                     </div>
                   </div>
@@ -497,24 +498,24 @@ const DoctorDashboard: React.FC<{
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {[
-          { label: "Today's Visits", value: stats.today, color: 'from-[#F0E8FF] to-white dark:from-[#211F4E] dark:to-[#151838]', icon: Calendar },
-          { label: 'Upcoming', value: stats.upcoming, color: 'from-[#E6FAF7] to-white dark:from-[#12362C] dark:to-[#151838]', icon: Clock },
-          { label: 'Completed', value: stats.completed, color: 'from-[#E8F6FF] to-white dark:from-[#0E2A3B] dark:to-[#151838]', icon: CheckCircle2 },
-          { label: 'All Appointments', value: stats.total, color: 'from-[#FFF4E8] to-white dark:from-[#3B2A16] dark:to-[#151838]', icon: ClipboardList },
+          { label: "Today's Visits", value: stats.today, bg: 'bg-[#FFCC24]', textColor: 'text-black', icon: Calendar },
+          { label: 'Upcoming', value: stats.upcoming, bg: 'bg-[#00D09C]', textColor: 'text-black', icon: Clock },
+          { label: 'Completed', value: stats.completed, bg: 'bg-[#FF6B8B]', textColor: 'text-black', icon: CheckCircle2 },
+          { label: 'All Appointments', value: stats.total, bg: 'bg-[#2154FE]', textColor: 'text-white', icon: ClipboardList },
         ].map((stat) => {
           const Icon = stat.icon;
           return (
             <div
               key={stat.label}
-              className={`p-5 rounded-3xl bg-gradient-to-br ${stat.color} border border-slate-200/80 dark:border-white/10 shadow-aurora-card`}
+              className={`p-6 rounded-3xl ${stat.bg} ${stat.textColor} border-2 border-black shadow-neo space-y-1`}
             >
-              <div className="flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400">
+              <div className="flex items-center justify-between text-xs font-black">
                 <span>{stat.label}</span>
-                <Icon className="w-4 h-4 text-[#5145FF] dark:text-[#16CBE5]" />
+                <Icon className="w-4 h-4 stroke-[2.5]" />
               </div>
-              <span className="text-3xl font-black text-[#171A3B] dark:text-white font-mono block mt-2">
+              <span className="text-3xl sm:text-4xl font-black font-mono block mt-2">
                 {stat.value}
               </span>
             </div>
@@ -582,81 +583,81 @@ const DoctorDashboard: React.FC<{
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.98 }}
-                  className="p-5 rounded-3xl bg-white/95 dark:bg-[#151838]/90 border border-slate-200/80 dark:border-white/10 shadow-aurora-card space-y-4"
+                  className="p-6 rounded-3xl bg-white dark:bg-[#182032] border-2 border-black shadow-neo space-y-4"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-start gap-3">
-                      <div className="p-2.5 rounded-2xl bg-slate-50 dark:bg-[#0B0C1E] border border-slate-100 dark:border-white/10">
+                      <div className="p-3 rounded-2xl bg-[#FFCC24] border-2 border-black shadow-neo-sm">
                         {departmentIcon(appointment.departmentId)}
                       </div>
                       <div>
                         <div className="flex flex-wrap items-center gap-2">
-                          <span className="font-mono text-[11px] font-bold text-[#5145FF] dark:text-[#16CBE5] bg-[#F0E8FF] dark:bg-[#5145FF]/20 px-2 py-0.5 rounded-md">
+                          <span className="font-mono text-xs font-black text-black bg-[#FFCC24] border border-black px-2.5 py-0.5 rounded-md">
                             {appointment.referenceId}
                           </span>
                           <span
-                            className={`text-[10px] font-black px-2 py-0.5 rounded-full uppercase ${
+                            className={`text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase border border-black ${
                               appointment.status === 'confirmed'
-                                ? 'bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300'
+                                ? 'bg-[#00D09C] text-black'
                                 : appointment.status === 'completed'
-                                ? 'bg-sky-100 dark:bg-sky-950/60 text-sky-800 dark:text-sky-300'
+                                ? 'bg-[#2154FE] text-white'
                                 : appointment.status === 'cancelled'
-                                ? 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
-                                : 'bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300'
+                                ? 'bg-neutral-200 text-neutral-500 line-through'
+                                : 'bg-[#FFCC24] text-black'
                             }`}
                           >
                             {appointment.status.replace('_', ' ')}
                           </span>
                         </div>
-                        <h3 className="text-base font-bold text-[#171A3B] dark:text-white mt-1.5">
+                        <h3 className="text-base font-black text-black dark:text-white mt-1.5">
                           {appointment.patientName}
-                          <span className="text-xs font-semibold text-slate-400 dark:text-slate-500 ml-2">
+                          <span className="text-xs font-bold text-black/60 dark:text-slate-400 ml-2">
                             {appointment.patientAge}y
                             {appointment.patientGender ? ` · ${appointment.patientGender}` : ''}
                           </span>
                         </h3>
-                        <p className="text-xs text-slate-500 dark:text-slate-400">
+                        <p className="text-xs font-bold text-black/70 dark:text-slate-400">
                           {appointment.departmentName}
                         </p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2 text-xs">
-                    <div className="flex items-center gap-1.5 p-2 rounded-xl bg-slate-50 dark:bg-[#0B0C1E]">
-                      <Calendar className="w-3.5 h-3.5 text-[#5145FF] dark:text-[#16CBE5]" />
-                      <span className="font-semibold text-slate-700 dark:text-slate-200">
+                  <div className="grid grid-cols-2 gap-2 text-xs font-bold">
+                    <div className="flex items-center gap-1.5 p-2 rounded-xl bg-[#FAF7EE] dark:bg-[#0E131F] border border-black/20">
+                      <Calendar className="w-3.5 h-3.5 text-[#2154FE]" />
+                      <span className="text-black dark:text-slate-200">
                         {formatDate(appointment.date)}
                       </span>
                     </div>
-                    <div className="flex items-center gap-1.5 p-2 rounded-xl bg-slate-50 dark:bg-[#0B0C1E]">
-                      <Clock className="w-3.5 h-3.5 text-[#5145FF] dark:text-[#16CBE5]" />
-                      <span className="font-semibold text-slate-700 dark:text-slate-200">
+                    <div className="flex items-center gap-1.5 p-2 rounded-xl bg-[#FAF7EE] dark:bg-[#0E131F] border border-black/20">
+                      <Clock className="w-3.5 h-3.5 text-[#2154FE]" />
+                      <span className="text-black dark:text-slate-200">
                         {appointment.time}
                       </span>
                     </div>
-                    <div className="flex items-center gap-1.5 p-2 rounded-xl bg-slate-50 dark:bg-[#0B0C1E] min-w-0">
-                      <Phone className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                      <span className="font-semibold text-slate-700 dark:text-slate-200 truncate">
+                    <div className="flex items-center gap-1.5 p-2 rounded-xl bg-[#FAF7EE] dark:bg-[#0E131F] border border-black/20 min-w-0">
+                      <Phone className="w-3.5 h-3.5 text-black/60 shrink-0" />
+                      <span className="text-black dark:text-slate-200 truncate">
                         {appointment.mobileNumber || 'No phone'}
                       </span>
                     </div>
-                    <div className="flex items-center gap-1.5 p-2 rounded-xl bg-slate-50 dark:bg-[#0B0C1E] min-w-0">
-                      <Mail className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                      <span className="font-semibold text-slate-700 dark:text-slate-200 truncate">
+                    <div className="flex items-center gap-1.5 p-2 rounded-xl bg-[#FAF7EE] dark:bg-[#0E131F] border border-black/20 min-w-0">
+                      <Mail className="w-3.5 h-3.5 text-black/60 shrink-0" />
+                      <span className="text-black dark:text-slate-200 truncate">
                         {appointment.email || 'No email'}
                       </span>
                     </div>
                   </div>
 
                   {appointment.reason && (
-                    <div className="text-[11px] text-slate-600 dark:text-slate-300 italic bg-[#FFFDF8] dark:bg-[#0B0C1E] p-3 rounded-xl border border-slate-100 dark:border-white/10">
+                    <div className="text-[11px] text-black dark:text-slate-300 font-bold italic bg-[#FAF7EE] dark:bg-[#0E131F] p-3 rounded-xl border border-black/20">
                       “{appointment.reason}”
                     </div>
                   )}
 
                   {appointment.doctorNotes && (
-                    <div className="text-[11px] text-slate-600 dark:text-slate-300 bg-[#E6FAF7] dark:bg-[#00CFA8]/10 p-3 rounded-xl border border-[#00CFA8]/30">
+                    <div className="text-[11px] text-black dark:text-slate-300 bg-[#FFCC24]/30 p-3 rounded-xl border border-black/20 font-bold">
                       <strong>Clinical note:</strong> {appointment.doctorNotes}
                     </div>
                   )}
@@ -668,7 +669,7 @@ const DoctorDashboard: React.FC<{
                           type="button"
                           disabled={isBusy}
                           onClick={() => handleStatus(appointment, 'confirmed')}
-                          className="px-3.5 py-2 rounded-xl bg-[#5145FF] text-white text-xs font-bold hover:opacity-95 disabled:opacity-50 flex items-center gap-1.5 cursor-pointer"
+                          className="px-4 py-2 rounded-full bg-[#FFCC24] hover:bg-[#F5C21B] text-black text-xs font-black border-2 border-black shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex items-center gap-1.5 cursor-pointer"
                         >
                           <CheckCircle2 className="w-3.5 h-3.5" />
                           Confirm
@@ -678,7 +679,7 @@ const DoctorDashboard: React.FC<{
                         type="button"
                         disabled={isBusy}
                         onClick={() => handleStatus(appointment, 'completed')}
-                        className="px-3.5 py-2 rounded-xl bg-[#00CFA8] text-white text-xs font-bold hover:opacity-95 disabled:opacity-50 flex items-center gap-1.5 cursor-pointer"
+                        className="px-4 py-2 rounded-full bg-[#00D09C] hover:bg-[#00B887] text-black text-xs font-black border-2 border-black shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex items-center gap-1.5 cursor-pointer"
                       >
                         <CheckCircle2 className="w-3.5 h-3.5" />
                         Mark Completed
@@ -687,13 +688,13 @@ const DoctorDashboard: React.FC<{
                         type="button"
                         disabled={isBusy}
                         onClick={() => handleStatus(appointment, 'cancelled')}
-                        className="px-3.5 py-2 rounded-xl bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-300 border border-rose-200 dark:border-rose-800 text-xs font-bold hover:bg-rose-100 disabled:opacity-50 flex items-center gap-1.5 cursor-pointer"
+                        className="px-4 py-2 rounded-full bg-[#FF6B8B] hover:bg-[#F2587A] text-black text-xs font-black border-2 border-black shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex items-center gap-1.5 cursor-pointer"
                       >
                         <XCircle className="w-3.5 h-3.5" />
                         Cancel
                       </button>
                       {isBusy && (
-                        <span className="text-[11px] font-semibold text-slate-400 dark:text-slate-500">
+                        <span className="text-[11px] font-black text-black/60">
                           Updating…
                         </span>
                       )}
