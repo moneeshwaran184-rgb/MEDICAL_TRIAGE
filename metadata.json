@@ -1,0 +1,6 @@
+{
+  "name": "Aether Medical",
+  "description": "Hospital appointment booking and AI-assisted patient triage system. Find available slots, consult medical departments, and schedule care.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

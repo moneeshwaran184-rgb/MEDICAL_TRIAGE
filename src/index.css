@@ -1,0 +1,169 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Urbanist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Urbanist", ui-sans-serif, system-ui, sans-serif;
+
+  /* Aurora Care Brand Palette */
+  --color-aurora-indigo: #5145FF;
+  --color-aurora-violet: #8957FF;
+  --color-aurora-fuchsia: #E34AD7;
+  --color-aurora-cyan: #16CBE5;
+  --color-aurora-teal: #00CFA8;
+  --color-aurora-coral: #FF745C;
+  --color-aurora-tangerine: #FF9B54;
+  --color-aurora-yellow: #FFC857;
+  --color-aurora-mint: #B9F4D0;
+  --color-aurora-lavender: #F0E8FF;
+  --color-aurora-ivory: #FFFDF8;
+  --color-aurora-ink: #171A3B;
+  --color-aurora-darkbase: #0B0C1E;
+  --color-aurora-darkcard: #151838;
+}
+
+:root {
+  font-family: "Urbanist", ui-sans-serif, system-ui, sans-serif;
+  --focus-ring: #5145FF;
+}
+
+html {
+  font-family: "Urbanist", ui-sans-serif, system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+html.dark {
+  background-color: #0B0C1E;
+  color: #F8FAFC;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: "Urbanist", ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.font-mono {
+  font-family: "Urbanist", ui-sans-serif, system-ui, sans-serif !important;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid #5145FF;
+  outline-offset: 2px;
+}
+
+/* Multi-layer Aurora Mesh Backgrounds */
+.bg-aurora-mesh {
+  background-color: #FFFDF8;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(240, 232, 255, 0.85) 0px, transparent 55%),
+    radial-gradient(at 100% 0%, rgba(22, 203, 229, 0.25) 0px, transparent 50%),
+    radial-gradient(at 100% 50%, rgba(227, 74, 215, 0.18) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(185, 244, 208, 0.35) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(255, 116, 92, 0.18) 0px, transparent 50%);
+}
+
+.dark .bg-aurora-mesh {
+  background-color: #0B0C1E;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(81, 69, 255, 0.25) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(22, 203, 229, 0.22) 0px, transparent 50%),
+    radial-gradient(at 100% 50%, rgba(227, 74, 215, 0.2) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(0, 207, 168, 0.18) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(137, 87, 255, 0.25) 0px, transparent 50%);
+}
+
+/* Aurora Glass Card */
+.aurora-glass {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.dark .aurora-glass {
+  background: rgba(21, 24, 56, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Luminous Colored Glow Shadows */
+.shadow-aurora-indigo {
+  box-shadow: 0 10px 30px -8px rgba(81, 69, 255, 0.35);
+}
+
+.shadow-aurora-coral {
+  box-shadow: 0 10px 30px -8px rgba(255, 116, 92, 0.32);
+}
+
+.shadow-aurora-cyan {
+  box-shadow: 0 10px 30px -8px rgba(22, 203, 229, 0.32);
+}
+
+.shadow-aurora-fuchsia {
+  box-shadow: 0 10px 30px -8px rgba(227, 74, 215, 0.32);
+}
+
+.shadow-aurora-card {
+  box-shadow: 0 4px 24px -2px rgba(23, 26, 59, 0.06), 0 2px 8px -2px rgba(23, 26, 59, 0.04);
+}
+
+.dark .shadow-aurora-card {
+  box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.35), 0 2px 8px -2px rgba(81, 69, 255, 0.15);
+}
+
+.shadow-aurora-card-hover {
+  box-shadow: 0 16px 40px -6px rgba(81, 69, 255, 0.16), 0 6px 16px -4px rgba(23, 26, 59, 0.08);
+}
+
+.dark .shadow-aurora-card-hover {
+  box-shadow: 0 16px 40px -6px rgba(137, 87, 255, 0.28), 0 6px 16px -4px rgba(0, 0, 0, 0.4);
+}
+
+/* Aurora Ambient Motion */
+@keyframes aurora-pulse-slow {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.08) translate(10px, -8px);
+  }
+}
+
+.animate-aurora-pulse-slow {
+  animation: aurora-pulse-slow 8s ease-in-out infinite;
+}
+
+@keyframes aurora-pulse-alt {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.06) translate(-12px, 10px);
+  }
+}
+
+.animate-aurora-pulse-alt {
+  animation: aurora-pulse-alt 10s ease-in-out infinite;
+}
+
+/* Reduced motion compliance */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
