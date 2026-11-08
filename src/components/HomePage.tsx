@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { motion } from 'motion/react';
 import { PageTab, DepartmentId } from '../types/index.ts';
 import { DEPARTMENTS } from '../services/appointmentService.ts';
@@ -23,6 +23,8 @@ import {
   ChevronRight,
   UserCheck,
 } from 'lucide-react';
+
+const MedicalScene = lazy(() => import('./MedicalScene.tsx').then(m => ({ default: m.MedicalScene })));
 
 interface HomePageProps {
   onSelectTab: (tab: PageTab) => void;
@@ -136,9 +138,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onSelectTab, onBookDepartmen
   ];
 
   return (
-    <div className="w-full bg-[#FAF7EE] dark:bg-[#0E131F] text-black dark:text-slate-100 transition-colors duration-200">
+    <div className="home-surface w-full text-black dark:text-slate-100 transition-colors duration-200">
       {/* 1. VIBRANT SUNSHINE YELLOW HERO SECTION (Matching Image 5) */}
-      <section className="w-full bg-[#FFCC24] border-b-2 border-black py-12 sm:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section className="home-immersive-hero w-full py-12 sm:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
             {/* Left Content (7 Cols) */}
@@ -194,71 +196,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onSelectTab, onBookDepartmen
               </div>
             </div>
 
-            {/* Right Rich Visual Card with Tilted Badges (Matching Image 5) */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative mx-auto max-w-md lg:max-w-none">
-                {/* Tilted Sticker Badge 1: Top Left Pink Badge */}
-                <div className="absolute -top-4 -left-3 sm:-top-5 sm:-left-4 z-20 transform -rotate-6 bg-[#FF6B8B] text-black border-2 border-black rounded-full px-4 py-1.5 font-black text-xs sm:text-sm shadow-neo">
-                  Est. 2018
-                </div>
-
-                {/* Main Framed Hero Photo Container */}
-                <div className="bg-white border-[3px] border-black rounded-3xl p-4 sm:p-5 shadow-neo-lg relative overflow-hidden">
-                  <div className="bg-[#FAF7EE] border-2 border-black rounded-2xl p-6 sm:p-8 space-y-5">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-xl bg-[#2154FE] border-2 border-black flex items-center justify-center text-white shadow-neo-sm">
-                          <Stethoscope className="w-6 h-6 stroke-[2.5]" />
-                        </div>
-                        <div>
-                          <span className="text-xs font-black uppercase tracking-wider text-black block">
-                            Today&apos;s Open Clinic
-                          </span>
-                          <span className="text-lg font-black text-black">Aether Medical Desk</span>
-                        </div>
-                      </div>
-                      <span className="bg-[#00D09C] text-black font-black text-[11px] px-2.5 py-1 rounded-full border-2 border-black">
-                        Active
-                      </span>
-                    </div>
-
-                    {/* Illustrated consultation pass */}
-                    <div className="p-4 rounded-xl bg-white border-2 border-black shadow-neo-sm space-y-2">
-                      <div className="flex justify-between items-center text-xs font-black text-black/70">
-                        <span>CONSULTATION PASS</span>
-                        <span className="text-[#2154FE] font-mono font-bold">#AET-2026</span>
-                      </div>
-                      <div className="flex justify-between items-end">
-                        <div>
-                          <span className="text-sm font-black text-black block">Cardiology Review</span>
-                          <span className="text-xs font-bold text-black/60">Dr. Marcus Vance, MD</span>
-                        </div>
-                        <span className="text-sm font-black text-[#2154FE]">10:30 AM Today</span>
-                      </div>
-                    </div>
-
-                    {/* Live Open Slots Progress Bar */}
-                    <div className="p-4 rounded-xl bg-white border-2 border-black shadow-neo-sm space-y-2">
-                      <div className="flex justify-between items-center text-xs font-black text-black">
-                        <span className="flex items-center gap-1.5">
-                          <Clock className="w-3.5 h-3.5 text-[#2154FE]" />
-                          <span>Today&apos;s Open Capacity</span>
-                        </span>
-                        <span className="text-[#2154FE]">18 Slots Left</span>
-                      </div>
-                      <div className="w-full h-3 rounded-full bg-[#FAF7EE] border-2 border-black overflow-hidden p-0.5">
-                        <div className="h-full bg-[#2154FE] rounded-full w-[75%]" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Tilted Sticker Badge 2: Bottom Right White Badge */}
-                <div className="absolute -bottom-4 -right-3 sm:-bottom-5 sm:-right-4 z-20 transform rotate-6 bg-white text-black border-2 border-black rounded-full px-4 py-1.5 font-black text-xs sm:text-sm shadow-neo">
-                  Zero wait at clinic!
-                </div>
-              </div>
-            </div>
+            <div className="lg:col-span-5 relative"><Suspense fallback={<div className="medical-scene" />}><MedicalScene /></Suspense></div>
           </div>
         </div>
       </section>
@@ -474,7 +412,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onSelectTab, onBookDepartmen
       </section>
 
       {/* 6. "THE SELF-WASH" STYLE SECTION: THE AI PATIENT TRIAGE (Matching Image 4) */}
-      <section className="w-full bg-[#2154FE] border-y-2 border-black py-16 sm:py-24 px-4 sm:px-6 lg:px-8 text-white relative overflow-hidden">
+      <section className="w-full bg-transparent py-16 sm:py-24 px-4 sm:px-6 lg:px-8 text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="mb-10 max-w-xl space-y-3">
             <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white leading-tight">

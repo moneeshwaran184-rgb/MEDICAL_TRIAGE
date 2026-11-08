@@ -327,6 +327,11 @@ export const authService = {
       return { user: null, error: friendlyAuthError(error?.message || 'Unable to sign in.') };
     }
 
+    if (!data.user.email_confirmed_at) {
+      await supabase.auth.signOut();
+      return { user: null, error: 'Please verify your email using the link in your inbox before signing in.' };
+    }
+
     const profile = await loadProfile(data.user.id);
     if (!profile) {
       return { user: null, error: 'Signed in, but no profile was found for this account.' };

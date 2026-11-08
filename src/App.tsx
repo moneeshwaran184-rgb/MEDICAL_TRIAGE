@@ -1,3 +1,4 @@
+import { AmbientBackground } from './components/AmbientBackground.tsx';
 import React, { useState, useEffect } from 'react';
 import { PageTab, DepartmentId, UserProfile, AuthModalMode } from './types/index.ts';
 import { authService } from './services/authService.ts';
@@ -26,13 +27,7 @@ export default function App() {
   const [accountModalSubTab, setAccountModalSubTab] = useState<'profile' | 'appointments' | 'settings'>('appointments');
 
   // Dark Mode Theme State with LocalStorage Persistence
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
-    if (typeof window === 'undefined') return false;
-    const saved = localStorage.getItem('aether_aurora_theme');
-    if (saved === 'dark') return true;
-    if (saved === 'light') return false;
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -120,27 +115,8 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-aurora-mesh text-[#171A3B] dark:text-slate-100 flex flex-col font-sans selection:bg-[#5145FF] selection:text-white transition-colors duration-300 relative">
-      {/* Ambient Dynamic Colorful Lighting Elements (Fixed in Background) */}
-      <div className="fixed inset-0 pointer-events-none -z-0 overflow-hidden" aria-hidden="true">
-        {/* Subtle dot matrix grid for surgical high-tech precision */}
-        <div className="absolute inset-0 bg-[radial-gradient(rgba(81,69,255,0.07)_1px,transparent_1px)] dark:bg-[radial-gradient(rgba(22,203,229,0.09)_1px,transparent_1px)] [background-size:28px_28px] opacity-80" />
-
-        {/* Orb 1: Violet/Indigo upper-left glow */}
-        <div className="absolute -top-24 -left-20 w-[550px] h-[550px] rounded-full bg-gradient-to-tr from-[#5145FF]/30 via-[#8957FF]/25 to-transparent blur-[120px] dark:from-[#5145FF]/40 dark:via-[#8957FF]/35 animate-aurora-pulse-slow" />
-
-        {/* Orb 2: Tropical Cyan & Fresh Teal upper-right glow */}
-        <div className="absolute top-1/4 -right-24 w-[500px] h-[500px] rounded-full bg-gradient-to-bl from-[#16CBE5]/25 via-[#00CFA8]/20 to-transparent blur-[130px] dark:from-[#16CBE5]/35 dark:via-[#00CFA8]/30 animate-aurora-pulse-alt" />
-
-        {/* Orb 3: Fuchsia center accent */}
-        <div className="absolute top-1/2 left-1/3 w-[450px] h-[450px] rounded-full bg-[#E34AD7]/15 dark:bg-[#E34AD7]/22 blur-[140px] animate-aurora-pulse-slow" />
-
-        {/* Orb 4: Sunset Coral & Tangerine lower-left glow */}
-        <div className="absolute bottom-20 -left-20 w-[520px] h-[520px] rounded-full bg-gradient-to-tr from-[#FF745C]/20 via-[#FF9B54]/18 to-transparent blur-[120px] dark:from-[#FF745C]/25 dark:via-[#FF9B54]/22 animate-aurora-pulse-alt" />
-
-        {/* Orb 5: Sunshine Yellow / Mint bottom-right glow */}
-        <div className="absolute -bottom-20 right-10 w-[480px] h-[480px] rounded-full bg-gradient-to-tl from-[#FFC857]/20 via-[#B9F4D0]/25 to-transparent blur-[120px] dark:from-[#FFC857]/20 dark:via-[#B9F4D0]/18 animate-aurora-pulse-slow" />
-      </div>
+    <div className="site-shell min-h-screen bg-aurora-mesh text-[#171A3B] dark:text-slate-100 flex flex-col font-sans selection:bg-[#5145FF] selection:text-white transition-colors duration-300 relative">
+      <AmbientBackground />
 
       {/* Aurora Care Top Navigation with Dark Mode & Auth Controls */}
       <Navigation

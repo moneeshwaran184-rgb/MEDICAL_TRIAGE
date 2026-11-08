@@ -672,7 +672,7 @@ const DoctorDashboard: React.FC<{
                           className="px-4 py-2 rounded-full bg-[#FFCC24] hover:bg-[#F5C21B] text-black text-xs font-black border-2 border-black shadow-neo-sm hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all flex items-center gap-1.5 cursor-pointer"
                         >
                           <CheckCircle2 className="w-3.5 h-3.5" />
-                          Confirm
+                          Accept
                         </button>
                       )}
                       <button

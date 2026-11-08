@@ -181,7 +181,7 @@ export const BookAppointmentPage: React.FC<BookAppointmentPageProps> = ({
       const selectedDoc = doctors.find((d) => d.id === selectedDoctorId);
       const doctorNameToSave = selectedDoc ? selectedDoc.name : doctors[0]?.name || 'Attending Physician';
 
-      const booking = await appointmentService.bookSlot({
+      const result = await appointmentService.bookAppointment({
         departmentId: selectedDeptId,
         doctorId: selectedDoctorId || undefined,
         doctorName: doctorNameToSave,
@@ -191,11 +191,12 @@ export const BookAppointmentPage: React.FC<BookAppointmentPageProps> = ({
         patientAge: parseInt(patientAge, 10),
         mobileNumber: mobileNumber.trim(),
         email: email.trim() || undefined,
-        reason: reason.trim() || undefined,
+        reason: reason.trim(),
         userId: currentUser.id,
       });
 
-      setConfirmedBooking(booking);
+      if (!result.success || !result.booking) throw new Error(result.error || 'Unable to book appointment.');
+      setConfirmedBooking(result.booking);
       setIsSubmitting(false);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
@@ -241,7 +242,7 @@ export const BookAppointmentPage: React.FC<BookAppointmentPageProps> = ({
             Book Your Consultation
           </h1>
           <p className="text-black/70 dark:text-slate-400 font-bold text-sm sm:text-base mt-1">
-            Fast four-step scheduling with instant confirmed clinic reference number.
+            Fast four-step scheduling with a clinic reference number, followed by doctor approval.
           </p>
         </div>
 

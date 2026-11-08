@@ -225,4 +225,26 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
+}.medical-scene { position:relative; height:510px; width:100%; isolation:isolate; }
+.medical-scene::before { content:''; position:absolute; inset:12% 0 15%; border-radius:50%; background:radial-gradient(ellipse,rgba(255,255,255,.65),rgba(255,255,255,0) 68%); z-index:-1; }
+.medical-scene-canvas { position:absolute; inset:0; }
+.medical-scene-canvas canvas { display:block; width:100%; height:100%; }
+.medical-glass-label { position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:max-content; max-width:100%; padding:18px 24px; border:1px solid rgba(255,255,255,.85); border-radius:24px; background:rgba(255,255,255,.48); backdrop-filter:blur(18px); box-shadow:0 12px 40px #604b1515,inset 0 1px 0 #fff; color:#15253c; font-weight:750; font-size:14px; }
+.medical-glass-label small { display:block; margin-top:7px; text-align:center; font-size:9px; letter-spacing:.22em; opacity:.65; }
+.medical-status-dot { display:inline-block; width:7px;height:7px;border-radius:50%;background:#00a981;margin-right:8px; }
+.medical-scene-fallback { font-size:200px;text-align:center;color:#2154fe;padding-top:65px; }
+@media(max-width:640px){.medical-scene{height:380px;max-width:430px;margin:auto;}}
+/* Fixed atmospheric layer stays behind all interactive content. */
+.site-shell { isolation:isolate; }
+.ambient-background { position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none; background:#000; contain:strict; }
+.ambient-background canvas { position:absolute; inset:0; }
+.home-surface { background:transparent; }
+
+.home-immersive-hero { background:transparent; }
+.home-immersive-hero h1, .home-immersive-hero p, .home-immersive-hero .pt-4.flex { color:#f5f7ff; }
+.home-surface > section > div > h2, .home-surface > section > h2 { color:#f5f7ff; }
+.medical-scene::before { opacity:.18; }
+
+.site-shell { background:#000; }
+.medical-scene::before { display:none; }
+.medical-glass-label { backdrop-filter:none; background:rgba(238,243,255,.92); }
